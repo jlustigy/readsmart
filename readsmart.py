@@ -219,6 +219,11 @@ def hrt(path, Nstreams=8, plot=False, save=False, ptitle=''):
     t_flux = np.hstack([l[9],data[:,11]]) 
     
     if plot:
+        import matplotlib.pyplot as plt
+        import matplotlib as mpl
+        from matplotlib import gridspec
+        from matplotlib import rc
+        mpl.rcParams['font.size'] = 15.0
         fig = plt.figure(figsize=(12,8))
         gs = gridspec.GridSpec(1,1) 
         ax0 = plt.subplot(gs[0])
