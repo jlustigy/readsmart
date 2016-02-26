@@ -46,7 +46,7 @@ def atm(path, skiprows=1, getdata=False, plot=True, ptitle="", save=False):
     import matplotlib as mpl
     from matplotlib import gridspec
     from matplotlib import rc
-    mpl.rcParams['font.size'] = 20.0
+    mpl.rcParams['font.size'] = 15.0
 
     if not getdata and not plot:
         print "Error in read_atm: Set getdata=True or plot=True, otherwise this function does nothing."
@@ -112,7 +112,7 @@ def rad(path, plot=False, getdata=True, ptype='TOA', ptitle='', xran=[1,5], save
     import matplotlib as mpl
     from matplotlib import gridspec
     from matplotlib import rc
-    mpl.rcParams['font.size'] = 20.0
+    mpl.rcParams['font.size'] = 15.0
     
     rad_data = np.genfromtxt(path, skip_header=0)
     wl = rad_data[:,0]
@@ -219,6 +219,11 @@ def hrt(path, Nstreams=8, plot=False, save=False, ptitle=''):
     t_flux = np.hstack([l[9],data[:,11]]) 
     
     if plot:
+        import matplotlib.pyplot as plt
+        import matplotlib as mpl
+        from matplotlib import gridspec
+        from matplotlib import rc
+        mpl.rcParams['font.size'] = 15.0
         fig = plt.figure(figsize=(12,8))
         gs = gridspec.GridSpec(1,1) 
         ax0 = plt.subplot(gs[0])
@@ -334,7 +339,7 @@ def jacobians(path,jext,stream = 1, plot=False, getdata=True, xran=[1,5], pran=[
         import matplotlib as mpl
         from matplotlib import gridspec
         from matplotlib import rc
-        mpl.rcParams['font.size'] = 20.0    
+        mpl.rcParams['font.size'] = 15.0    
         len1 = len(wl)
         mask = (wl > xran[0]) & (wl < xran[1])
         pmask = (p > pran[0]) & (p < pran[1])
@@ -372,7 +377,7 @@ def jacobians(path,jext,stream = 1, plot=False, getdata=True, xran=[1,5], pran=[
         # Add color bar using gridspec
         cbaxes = plt.subplot(gs[0,0]) 
         cb = plt.colorbar(pl, cax = cbaxes, orientation="horizontal", use_gridspec=True)
-        cb.set_label(texstr+r" Jacobians [dR/d"+texstr+"]$ _{ \Delta = "+str(jfrac)+" } $", labelpad=-70)
+        cb.set_label(texstr+r" Jacobians [dR/d"+texstr+"]$ _{ \Delta = "+str(jfrac)+" } $", labelpad=-90)
         cbaxes.xaxis.tick_top()
         
         # attempting to modify radiance with jacobians
@@ -417,7 +422,7 @@ def jacobians(path,jext,stream = 1, plot=False, getdata=True, xran=[1,5], pran=[
         #ax2 = ax1.twinx()
         #ax2.plot(wl2,qe)
 
-        fig.subplots_adjust(hspace=0.05)
+        fig.subplots_adjust(hspace=0.1)
         fig.subplots_adjust(wspace=0.05)
 
         if save:
@@ -428,7 +433,10 @@ def jacobians(path,jext,stream = 1, plot=False, getdata=True, xran=[1,5], pran=[
         fig.show();
 
         
-    return jwl, jwno, presprofile, jrad, jacobians, vprofile, jfraction
+    if getdata:
+        return jwl, jwno, presprofile, jrad, jacobians, vprofile, jfraction
+    else:
+        return
 
     
 def read_header(arr):
