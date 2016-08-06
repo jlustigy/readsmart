@@ -1,5 +1,5 @@
 # readsmart
-A python package for reading and parsing i/o files related to the SMART model 
+A Python package for reading and parsing i/o files related to the SMART model 
 
 ## Examples
 
