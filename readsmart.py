@@ -187,11 +187,33 @@ def rad(path, plot=False, getdata=True, ptype='TOA', ptitle='', xran=[1,5], save
 #################################################################################
 
 def tran(path):
+    """
+    Read *.tran output files from the smart_spectra_transit code.
+
+    Parameters
+    ----------
+    path : str
+        Path/Filename of *.tran file
+
+    Returns
+    -------
+    wl : ndarray
+        Wavelength [microns]
+    flux_ratio : ndarray
+        Fractional flux transmission through model atmosphere (between 0 and 1)
+    absorbing_radius : ndarray
+        Effective absorbing radius of the atmosphere (in km)
+        (effective radius - solid body radius)
+
+    Note
+    ----
+    dF = (Rp/Rs)**2 = -(Rp_solid + column3)**2/Rs**2
+    """
     data = np.genfromtxt(path, skip_header=3)
     wl = data[:,0]
-    fluxratio = data[:,1]
+    flux_ratio = data[:,1]
     absorbing_radius = data[:,2]
-    return wl, fluxratio, absorbing_radius
+    return wl, flux_ratio, absorbing_radius
 
 #################################################################################
 

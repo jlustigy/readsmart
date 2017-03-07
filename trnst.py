@@ -1,11 +1,5 @@
-import numpy as np
-import matplotlib as mpl
-import matplotlib.pyplot as plt
-from matplotlib import gridspec
-mpl.rc('font',family='Times New Roman')
-mpl.rcParams['font.size'] = 25.0
-
-def trnst(path, getdata=False, plot=True, save=False, ptype="depth", xran=None, xlog=False, ptitle=""):
+def trnst(path, getdata=True, plot=False, save=False, ptype="depth", xran=None,
+          xlog=False, ptitle="", skip_header=2):
     """Reads-in SMART transit output files. Plots, saves, and returns arrays if requested.
 
     Parameters
@@ -41,9 +35,16 @@ def trnst(path, getdata=False, plot=True, save=False, ptype="depth", xran=None, 
 
     """
 
+    import numpy as np
+    import matplotlib as mpl
+    import matplotlib.pyplot as plt
+    from matplotlib import gridspec
+    mpl.rc('font',family='Times New Roman')
+    mpl.rcParams['font.size'] = 25.0
+
 
     # Read in .trnst file
-    data = np.genfromtxt(path)
+    data = np.genfromtxt(path, skip_header=2)
     # Split into arrays
     wl = data[:,0]
     wn = data[:,1]
