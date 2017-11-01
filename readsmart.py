@@ -108,6 +108,11 @@ def atm(path, skiprows=1, getdata=False, plot=True, ptitle="", save=False):
 #################################################################################
 
 def rad(path, plot=False, getdata=True, ptype='TOA', ptitle='', xran=[1,5], save=False):
+    """
+    Returns
+    -------
+    wl, wno, solar_spec, TOA_flux, rad_streams
+    """
 
     import matplotlib.pyplot as plt
     import matplotlib as mpl
