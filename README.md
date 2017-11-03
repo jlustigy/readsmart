@@ -30,7 +30,6 @@ rs.rad(rad_file, plot=True, getdata=False)
 # Plot radiance streams
 rs.rad(rad_file, plot=True, getdata=False, ptype='rad', xran=[1.0,15])
 ```
-<img src="https://github.com/jlustigy/readsmart/blob/master/example_files/plots/example_rad2.png" width="50%" height="50%" align="middle" />
 
 ```python
 # Specify jacobian file extension tag
