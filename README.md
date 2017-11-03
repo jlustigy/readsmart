@@ -17,7 +17,6 @@ pressure, temperature, abundance_profiles, gas_codes = rs.atm(atm_file, skiprows
 # Plot atm
 rs.atm(atm_file, skiprows=11)
 ```
-<img src="https://github.com/jlustigy/readsmart/blob/master/example_files/plots/example_atm.png" width="100%" height="100%" align="middle" />
 
 ```python
 # Get rad file data
@@ -26,7 +25,6 @@ wl, wno, solar_spec, TOA_flux, rad_streams = rs.rad(rad_file, plot=False, getdat
 # Plot flux
 rs.rad(rad_file, plot=True, getdata=False)
 ```
-<img src="https://github.com/jlustigy/readsmart/blob/master/example_files/plots/example_rad1.png" width="50%" height="50%" align="middle" />
 
 ```python
 # Plot radiance streams
